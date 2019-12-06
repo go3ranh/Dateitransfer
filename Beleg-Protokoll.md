@@ -46,7 +46,7 @@ Bei einem CRC- Fehler  soll kein ACK gesendet werden
 
 1. Sinnvoll ist eine gleitende Anpassung des Timeouts an der Übertragungskanal um den Datendurchsatz bei Paketwiederholungen zu erhöhen, Berechnung siehe z.B. TCP-Protokoll
 
-2. In Java ist die Klasse java.nio.ByteBuffer für Low-Level-Operationen gut nutzbar
+2. In Java ist die Klasse java.nio.ByteBuffer für Low-Level-Operationen gut nutzbar.  
    Außerdem interessant: Google Guava: https://github.com/google/guava
 
 3. Die Länge des Datenfeldes kann über die abfragbare UDP-Paketlänge ermittelt werden.

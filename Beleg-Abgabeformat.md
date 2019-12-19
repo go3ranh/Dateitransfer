@@ -12,15 +12,14 @@
 ```
 sXXXXX		← Ihre eigene S-Nummer  
 │  
-├── README.md	(in der ersten Zeile sollte Ihr vollständiger Name stehen)  
-├── make.sh  
-├── client-udp		(Parameter: host port filename)  
-├── server-udp		(Parameter: port)  
-├── doc/			    (Projektdokumentation)  
-├── bin/  
+├── README.md	   (in der ersten Zeile sollte Ihr vollständiger Name stehen)  
+├── make.sh        (Bashscript zur Compilierung Ihres Projektes)  
+├── filetransfer   (Parameter-Client: client host port filename     Parameter-Server: server port)  
+├── doc/           (Projektdokumentation)  
+├── bin/           (Binärdateien)  
 │   ├── *.class  
 │   └── ...  
-└── src/  
+└── src/           (Quellcode)  
     ├── *.java  
     └── ...
 ```
@@ -28,5 +27,5 @@ sXXXXX		← Ihre eigene S-Nummer  
 * Format der README.md ist plain ASCII (Markdown) kein Word etc.
 * Mit make.sh sollen die Klassen neu erstellt werden können.
 * Sie können auch mit Packages arbeiten, was bedeutet, dass Unterverzeichnisse in bin/ und src/ existieren. Es muss aber gewährleistet sein, dass mit dem Aufruf von make.sh alle Programme korrekt erstellt werden und ein Aufruf von client-udp und server-udp korrekt funktioniert.
-* Die beiden Skripte `client-udp` und `server-udp` sollen beim Aufruf aus dem sXXXXX-Verzeichnis funktionieren aber auch beim Aufruf aus dem eine Ebene höher gelegenen Verzeichnis. Dies kann über den classpath-Parameter in den Skripten realisiert werden (z.B. `java -cp bin:sXXXXX/bin FileCopy $1 $2 $3`). Die übertragene Datei sollte im aktuellen Verzeichnis gespeichert werden.
+* Das Skript `filetransfer` sollte beim Aufruf aus dem sXXXXX-Verzeichnis funktionieren aber auch beim Aufruf aus dem eine Ebene höher gelegenen Verzeichnis. Dies kann über den classpath-Parameter in den Skripten realisiert werden (z.B. `java -cp bin:sXXXXX/bin FileCopy $1 $2 $3`). Die übertragene Datei sollte im aktuellen Verzeichnis gespeichert werden.
   * Bsp.:  `./s1234/client-udp localhost 3333 test/dresden.jpg`

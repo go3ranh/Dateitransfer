@@ -15,13 +15,13 @@
 #
 
 # Define mandatory files/directories which existens should be tested
-mandatory_files=( "client-udp" "server-udp" "README.md" "make.sh" )
+mandatory_files=( "filetransfer" "README.md" "make.sh" )
 mandatory_directories=( "doc" "bin" "src")
 ignored_extensions=( "jpg" "pdf" "png" "gif" "jpeg" "docx" "tex" "tikz" "doc" "class")
 
 # Define scripts where the x right should be set via chmod
 # This set should be a subset of the set $mandatory_files
-accessable_scripts=( "client-udp" "server-udp" "make.sh" )
+accessable_scripts=( "filetransfer" "make.sh" )
 
 # Name of the Module
 #modul="Rechnernetze/Kommunikationssysteme"
@@ -251,7 +251,7 @@ crc_a=$(crc32 $testfile)
 
 # Execute server and return
 cd $beleg_directory
-./server-udp $port 0.1 150&
+./filetransfer server $port 0.1 150&
 cd ..
 
 # Save PID in order to kill it later
@@ -261,7 +261,7 @@ server_pid=$!
 #./$beleg_directory/client-udp localhost 3333 random.txt
 
 echo "Ausgabe Client ==========="
-command time -f "%e" -a -o $stats   timeout $timeout   ./$beleg_directory/client-udp localhost $port $testfile
+command time -f "%e" -a -o $stats   timeout $timeout   ./$beleg_directory/filetransfer client localhost $port $testfile
 echo "Ende Ausgabe Makefile ==========="
 
 echo -n "Time needed:"

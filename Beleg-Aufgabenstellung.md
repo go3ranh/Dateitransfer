@@ -13,7 +13,8 @@ Um die Aufrufe für Client und Server so zu realisieren ist ein kleines Bash-scr
 8. Bestimmen Sie den theoretisch max. erzielbaren Durchsatz bei 10% Paketverlust und 10 ms Verzögerung mit dem SW-Protokoll und vergleichen diesen mit Ihrem Programm. Begründen Sie die Unterschiede.
 9. Dokumentieren Sie die Funktion Ihres Programms unter Nutzung von Latex. Notwendig ist mindestens ein Zustandsdiagramm für Client und Server. Geben Sie Probleme/Limitierungen/Verbesserungsvorschläge für das verwendete Protokoll an.
 10. Der Abgabetermin ist auf der Website des Fachs zu finden, die Vorführung der Aufgabe findet dann zu den angekündigten Praktikumszeiten statt. Die Abgabe des Belegs erfolgt als tar-Archiv mit einem vorgegebenen Aufbau, Informationen hierzu werden im Dokument [Beleg-Abgabeformat](Beleg-Abgabeformat.md) bereitgestellt. **Plagiate werden mit Note 5** bewertet!
-11. **Optional**:
+11. Sie können zur Programmierung einen beliebigen Editor / Entwicklungsumgebung verwenden. Empfohlen wird die Entwicklungsumgebung IntelliJ IDEA welche für Studenten kostenlos erhältlich ist.
+12. **Optional**:
     * Umsetzung des Clients in C und Nachweis der Funktionsfähigkeit durch Datenübertragung zum Java-Server.
     * Bei Interesse können Sie zusätzlich das GbN- oder Selective-Repeat-Protokoll implementieren.
     * Bei Interesse können Sie einzelne Klassen oder den Beleg auch in Kotlin programmieren.

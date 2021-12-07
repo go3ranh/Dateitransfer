@@ -57,7 +57,9 @@ Siehe dazu auch http://introcs.cs.princeton.edu/java/61data/CRC32.java.html
 
 5. Für Stringhandling in Java siehe z.B. Klassen DataInput.readUTF  bzw. DataInputStream.readUTF
 Diese Klassen weichen zwar in drei Punkten vom UTF-8-Standard ab, welche aber für die Belegaufgabe unkritisch seien sollten, siehe:
- http://docs.oracle.com/javase/6/docs/api/java/io/DataInput.html#modified-utf-8
+ http://docs.oracle.com/javase/6/docs/api/java/io/DataInput.html#modified-utf-8  
+Alternative: fileName.getBytes(StandardCharsets.UTF_8) und fileName = new String(byteFileName, StandardCharsets.UTF_8)
+
 
 6. Nützlich sind die Javaklassen: ByteArrayInputStream, CheckedInputStream, DataInputStream
 

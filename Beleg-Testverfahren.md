@@ -15,3 +15,4 @@ Nachfolgende Server stehen zum Testen Ihres Programms zur Verfügung. Die Server
 3. Auf `idefix Port 3340` läuft zum Testen Ihres Clients+Servers ein Proxy mit den Parametern: Delay: 10 ms, Loss: 0,1
    * Ihr Client und Server müssen hierzu zwingend über dieselbe IP-Adresse erreichbar sein
    * Ihr Server muss auf Port 3400 empfangsbereit sein
+   * Falls Sie über NAT arbeiten, müssten Sie u.U. eine Portweiterleitung des Ports 3400 an Ihren Server einrichten

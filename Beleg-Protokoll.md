@@ -7,15 +7,13 @@ Nachfolgend ist das Protokoll zum Beleg Dateitransfer beschrieben. Implementiere
 * Der Server erkennt einen neuen Übertragungswunsch durch eine neue Sessionnummer und die Kennung „Start“.
 * Der Client wählt eine Sessionnummer per Zufall.
 * Übertragungsprotokoll: 
-  * Stop-and-Wait-Protokoll
+  * Stop-and-Wait-Protokoll oder Go-Back-N
   * Bei Absendung eines Paketes wird ein Timeout [[1]](#hinweise) gestartet, welcher mit korrekter Bestätigung durch den Empfänger zurückgesetzt wird.
   * Bei Auslösung des Timeouts wird das Paket erneut gesendet. Dies wird maximal 10 mal wiederholt. Danach erfolgt ein Programmabbruch mit einer Fehlermeldung. 
   * Beachten Sie die Vorgehensweise des Protokolls bzgl. verlorener Daten / ACKs etc.
 * Network-Byte-Order:  Big-Endian-Format [[2]](#hinweise)
-* Die Länge eines Datagrams [[3]](#hinweise) sei beliebig innerhalb des UDP-Standards, eine sinnvolle Länge ergibt sich aus der MTU des genutzten Netzes
+* Die Länge eines Datagrams [[3]](#hinweise) sollte auf die MTU des genutzten Netzes begrenzt werden.
 * CRC32-Polynom (IEEE-Standard) [[4]](#hinweise): 0x04C11DB7 für die Fehlererkennung im Startpaket und in der Gesamtdatei. 
-
-
 
 
 ## Paketaufbau
@@ -27,19 +25,21 @@ Nachfolgend ist das Protokoll zum Beleg Dateitransfer beschrieben. Implementiere
 * 64-Bit Dateilänge (unsigned integer) (für Dateien > 4 GB)
 * 2 Byte (unsigned integer) Länge des Dateinamens  
 * 0-255 Byte Dateiname als String mit Codierung UTF-8 [[5]](#hinweise)
-* 32-Bit-CRC über alle Daten des Startpaketes
+* 32-Bit-CRC über alle Daten des Startpaketes ab der Startkennung
 
 ### Datenpakete (Client -> Server)
 * 16-Bit-Sessionnummer
-* 8-Bit Paketnummer ( 1. Datenpaket hat die Nr. 1, gerechnet wird mod 2, also nur 0 und 1)
+* 8-Bit Paketnummer, 1. Datenpaket hat die Nr. 1  (SW: gerechnet wird mod 2, GBN: mod 256 )
 * Daten 
-* 32-Bit-CRC (nur im letzten Paket vorhanden) Berechnung über Gesamtdatei, die CRC darf nicht auf mehrere UDP-Pakete aufgeteilt werden
+
+### letztes Datenpaket (Client -> Server)
+* 32-Bit-CRC Berechnung über Gesamtdatei, die CRC darf nicht auf mehrere UDP-Pakete aufgeteilt werden
 
 ### Bestätigungspakete (Server -> Client)
 * 16-Bit-Sessionnummer
 * 8-Bit Bestätigungsnummer für das zu bestätigende Paket  (ACK 0 → Paket Nr. 0 bestätigt)  
-Bei einem CRC- Fehler  soll kein ACK gesendet werden
-
+* 8-Bit Anzahl der maximal vom Client ohne Bestätigung zu sendenden Pakete (SW: 1 , GBN: 1-255)
+* 8-Bit CRC-Vergleich (nur letztes Ack) 0: CRC-Fehler  1: keine CRC-Fehler 
 
 
 ## Hinweise

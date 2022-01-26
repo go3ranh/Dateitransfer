@@ -33,13 +33,15 @@ Nachfolgend ist das Protokoll zum Beleg Dateitransfer beschrieben. Implementiere
 * Daten 
 
 ### letztes Datenpaket (Client -> Server)
+* 16-Bit-Sessionnummer
+* 8-Bit Paketnummer
 * 32-Bit-CRC Berechnung über Gesamtdatei, die CRC darf nicht auf mehrere UDP-Pakete aufgeteilt werden
 
 ### Bestätigungspakete (Server -> Client)
 * 16-Bit-Sessionnummer
 * 8-Bit Bestätigungsnummer für das zu bestätigende Paket  (ACK 0 → Paket Nr. 0 bestätigt)  
 * 8-Bit Anzahl der maximal vom Client ohne Bestätigung zu sendenden Pakete (SW: 1 , GBN: 1-255)
-* 8-Bit CRC-Vergleich (nur letztes Ack) 0: CRC-Fehler  1: keine CRC-Fehler 
+* 32-Bit CRC (Berechnung über Gesamtdatei am Server)
 
 
 ## Hinweise

@@ -29,7 +29,7 @@ Nachfolgend ist das Protokoll zum Beleg Dateitransfer beschrieben. Implementiere
 
 ### Datenpakete (Client -> Server)
 * 16-Bit-Sessionnummer
-* 8-Bit Paketnummer, 1. Datenpaket hat die Nr. 1  (SW: gerechnet wird mod 2, GBN: mod 256 )
+* 8-Bit Paketnummer, 1. Datenpaket hat die Nr. 1  (SW/GBN: gerechnet wird mod 256 )
 * Daten 
 
 ### letztes Datenpaket (Client -> Server)
@@ -40,7 +40,7 @@ Nachfolgend ist das Protokoll zum Beleg Dateitransfer beschrieben. Implementiere
 ### Bestätigungspakete (Server -> Client)
 * 16-Bit-Sessionnummer
 * 8-Bit Bestätigungsnummer für das zu bestätigende Paket  (ACK 0 → Paket Nr. 0 bestätigt)  
-* 8-Bit Anzahl der maximal vom Client ohne Bestätigung zu sendenden Pakete (SW: 1 , GBN: 1-255)
+* 8-Bit Anzahl der maximal vom Client ohne Bestätigung zu sendenden Pakete (GBN: 1-255)
 * 32-Bit CRC (Berechnung über Gesamtdatei am Server)
 
 

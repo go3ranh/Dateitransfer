@@ -41,7 +41,7 @@ Nachfolgend ist das Protokoll zum Beleg Dateitransfer beschrieben. Implementiere
 * 16-Bit-Sessionnummer
 * 8-Bit Bestätigungsnummer für das zu bestätigende Paket  (ACK 0 → Paket Nr. 0 bestätigt)  
 * 8-Bit Anzahl der maximal vom Client ohne Bestätigung zu sendenden Pakete (GBN: 1-255)
-* 32-Bit CRC (Berechnung über Gesamtdatei am Server)
+* 32-Bit CRC (Berechnung über Gesamtdatei am Server, nur letztes Bestätigungspaket)
 
 
 ## Hinweise

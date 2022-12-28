@@ -21,8 +21,8 @@
 3. Die Länge des Datenfeldes kann über die abfragbare UDP-Paketlänge ermittelt werden.
 
 4. Implementierungsdetails für CRC32: gespiegeltes Polynom, Initialisierung des Registers mit 0xffffffff, Berechnung des Endwerts XOR 0xffffffff  
-Test:  Codierung der ASCII-Folge 123456789  muss die CRC cbf43926  ergeben  
-Siehe dazu auch http://introcs.cs.princeton.edu/java/61data/CRC32.java.html
+Test:  Codierung der ASCII-Folge 123456789  muss die CRC cbf43926  ergeben, siehe  (https://crccalc.com/) .
+Java-Klassen:  http://introcs.cs.princeton.edu/java/61data/CRC32.java.html
 
 5. Für Stringhandling in Java siehe z.B. Klassen DataInput.readUTF  bzw. DataInputStream.readUTF
 Diese Klassen weichen zwar in drei Punkten vom UTF-8-Standard ab, welche aber für die Belegaufgabe unkritisch seien sollten, siehe:

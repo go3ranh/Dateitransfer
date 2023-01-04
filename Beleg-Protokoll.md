@@ -24,13 +24,13 @@ Nachfolgend ist das Protokoll zum Beleg Dateitransfer beschrieben. Implementiere
 *  5-Byte Kennung „Start“  als ASCII-Zeichen
 * 64-Bit Dateilänge (unsigned integer) (für Dateien > 4 GB)
 * 16-Bit (unsigned integer) Länge des Dateinamens  (1-255)
-* 0-255 Byte Dateiname als String mit Codierung UTF-8 (erlaubte Zeichen: [a-zA-ZäöüßÄÖÜ0-9_\-\.])
+* 0-255 Byte Dateiname als String mit Codierung UTF-8 (erlaubte Zeichen: [a-zA-ZäöüßÄÖÜ0-9_\\-\\.])
 * 32-Bit CRC32 über alle Daten des Startpaketes ab der Startkennung (Sessionnummer und Paketnummer werden nicht einbezogen)
 
 ### Datenpakete (Client -> Server)
 * 16-Bit-Sessionnummer
 *  8-Bit Paketnummer, 1. Datenpaket hat die Nr. 1  (SW/GBN: gerechnet wird mod 256 )
-* Daten (max. 1470 Byte)
+* Daten (max. 1400 Byte)
 
 ### letztes Datenpaket (Client -> Server)
 * 16-Bit Sessionnummer

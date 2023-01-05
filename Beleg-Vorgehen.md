@@ -33,7 +33,7 @@
 
 ### Zahlendarstellung
 * Ob ein Wert in einem int vorzeichenbehaftet oder vorzeichenlos ist, hängt davon ab, wie die Bits interpretiert werden - Java interpretiert Bits als vorzeichenbehaftete Werte. 
-* Wenn man ein int hat, welcher als vorzeichenlosen Wert interpretiert werden soll (z.B. wenn man ein int aus einem DataInputStream liest, von dem man weiß, dass es einen vorzeichenlosen Wert enthält), kann man folgendermaßen vorgehen:
+* Wenn man ein int hat, welcher als vorzeichenloser Wert interpretiert werden soll (z.B. wenn man ein int aus einem DataInputStream liest, von dem man weiß, dass es einen vorzeichenlosen Wert enthält), kann man folgendermaßen vorgehen:
 
 `int fourBytesIJustRead = someObject.getInt();`  
 `long unsignedValue = fourBytesIJustRead & 0xffffffffl;`

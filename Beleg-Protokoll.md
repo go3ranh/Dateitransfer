@@ -8,7 +8,7 @@ Nachfolgend ist das Protokoll zum Beleg Dateitransfer beschrieben. Implementiere
 * Der Client wählt eine Sessionnummer per Zufall.
 * Übertragungsprotokoll: 
   * Stop-and-Wait-Protokoll oder Go-Back-N
-  * Bei Absendung eines Paketes vom Client wird ein Timeout [[1]](#hinweise) gestartet, welcher mit korrekter Bestätigung durch den Empfänger zurückgesetzt wird.
+  * Bei Absendung eines Paketes vom Client wird ein Timeout gestartet, welcher mit korrekter Bestätigung durch den Empfänger zurückgesetzt wird. (Startwert 1 Sekunde, Anpassung an den Kanal z.B. mittels Alorithmus von TCP)
   * Bei Auslösung des Timeouts wird das Paket erneut gesendet. Dies wird maximal 10 mal wiederholt. Danach erfolgt ein Programmabbruch mit einer Fehlermeldung. 
   * Beachten Sie die Vorgehensweise des Protokolls bzgl. verlorener Daten / ACKs etc.
 * Network-Byte-Order:  Big-Endian-Format
@@ -42,7 +42,3 @@ Nachfolgend ist das Protokoll zum Beleg Dateitransfer beschrieben. Implementiere
 *  8-Bit Bestätigungsnummer für das zu bestätigende Paket  (ACK 0 → Paket Nr. 0 bestätigt)  
 *  8-Bit Anzahl der maximal vom Client ohne Bestätigung zu sendenden Pakete (GBN: 1-255)
 * 32-Bit CRC32 (Berechnung über die Gesamtdatei am Server, wird nur im **letzten Bestätigungspaket** verschickt)
-
-## Hinweise
-
-1. Sinnvoll ist eine gleitende Anpassung des Timeouts an der Übertragungskanal um den Datendurchsatz bei Paketwiederholungen zu erhöhen, Berechnung siehe z.B. TCP-Protokoll

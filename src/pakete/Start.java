@@ -53,4 +53,7 @@ public class Start extends Paket{
     public String getKennung(){
         return new String(Arrays.copyOfRange(buffer.array(), 3, 8));
     }
+    public int getCRC(){
+        return ByteBuffer.wrap(Arrays.copyOfRange(buffer.array(), buffer.array().length - 5, buffer.array().length - 1)).getInt();
+    }
 }

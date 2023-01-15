@@ -26,7 +26,7 @@ public class Paket {
     }
 
     public int getNumber(){
-        return (int) buffer.get(3);
+        return (int) buffer.get(2);
     }
 
 }

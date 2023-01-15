@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HexFormat;
 
 public class StopAndWait implements ARQ{
+    private int mtu;
 
     private Socket socket;
 
@@ -23,6 +24,7 @@ public class StopAndWait implements ARQ{
                 socket.sendPacket(hlData);
                 Ack ack = new Ack(socket.receivePacket().getData());
                 if(ack.getNumber() == send.getNumber() && ack.getSession() == send.getSession()){
+                    System.out.println("ack received for "+ ack.getNumber());
                     return true;
                 }
             }while (!success && retries < 10);
@@ -38,12 +40,13 @@ public class StopAndWait implements ARQ{
 
         DatagramPacket datagramPacket = socket.receivePacket();
         byte[] data = datagramPacket.getData();
-        System.out.println(HexFormat.of().formatHex(data, 0, data.length));
+        System.out.println("packet lenght: " + datagramPacket.getLength());
+        System.out.println(HexFormat.of().formatHex(data, 0, datagramPacket.getLength()));
         Ack acknowledgePacket = new Ack(Arrays.copyOfRange(data, 0, 2), data[2], (byte) 1);
         socket.sendPacket(acknowledgePacket.toBytes());
-        return Arrays.copyOfRange(datagramPacket.getData(), 0, Math.min(this.getMTU(), remaining) );
+        //return Arrays.copyOfRange(data, 0, Math.min(this.getMTU(), remaining) );
         //DatagramPacket packet = socket.receivePacket();
-        //return packet.getData();
+        return Arrays.copyOfRange(data, 0, datagramPacket.getLength());
     }
 
     @Override
@@ -68,11 +71,12 @@ public class StopAndWait implements ARQ{
 
     @Override
     public int getMTU() {
-        return 0;
+        return mtu;
     }
 
     @Override
     public void setMTU(int MTU) {
+        this.mtu = MTU;
 
     }
 }

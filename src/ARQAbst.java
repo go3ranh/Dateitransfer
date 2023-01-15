@@ -78,7 +78,7 @@ public abstract class ARQAbst implements ARQ {
    * @throws TimeoutException Timeout of Socket
    */
   @Override
-  public abstract byte[] data_ind_req(int... values) throws TimeoutException;
+  public abstract byte[] data_ind_req(int remainig) throws TimeoutException;
 
   /**
    * Receiver: generates ACK accordingly to protocol definition Session ID + PacketNr.

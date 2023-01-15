@@ -15,9 +15,11 @@ public interface ARQ {
    * @return DataPacket without SW-Header
    * @throws TimeoutException Timeout of Socket
    */
-  byte[] data_ind_req(int... values) throws TimeoutException;
+  //byte[] data_ind_req(int... values) throws TimeoutException;
 
-  /**
+    byte[] data_ind_req(int remaining) throws TimeoutException;
+
+    /**
    *
    * @return optional data from receiver
    */
